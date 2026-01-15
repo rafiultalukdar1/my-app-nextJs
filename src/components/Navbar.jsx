@@ -20,7 +20,7 @@ const Navbar = () => {
                         <div>
                             LOGO
                         </div>
-                        <div className='flex items-center gap-2.5'>
+                        <div className='flex items-center gap-5'>
                             {links}
                         </div>
                     </div>
