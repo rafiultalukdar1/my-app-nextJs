@@ -18,7 +18,7 @@ const Navbar = () => {
                 <div className='container'>
                     <div className='flex items-center justify-between'>
                         <div>
-                            LOGO
+                            <Link href='/' >LOGO</Link>
                         </div>
                         <div className='flex items-center gap-5'>
                             {links}

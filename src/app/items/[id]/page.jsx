@@ -1,9 +1,6 @@
-import StoryCard from '@/components/StoryCard/StoryCard';
-import React from 'react';
+import React from "react";
 
-const Items = () => {
-
-    const devItems = [
+const devItems = [
         {
             id: 1,
             name: "Arman Hossain",
@@ -61,22 +58,60 @@ const Items = () => {
         }
     ];
 
+export default async function StoryDetails({ params }) {
+  // ✅ IMPORTANT FIX
+  const { id } = await params;
 
+  const story = devItems.find(
+    (item) => item.id === Number(id)
+  );
+
+  if (!story) {
     return (
-        <>
-            <div className='py-12.5 lg:py-27.5'>
-                <div className='container'>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {
-                        devItems.map(story => 
-                            <StoryCard key={story.id} story={story}></StoryCard>
-                        )
-                    }
-                    </div>
-                </div>
-            </div>
-        </>
+      <div className="py-20 text-center text-red-500 text-lg">
+        Story not found
+      </div>
     );
-};
+  }
 
-export default Items;
+  return (
+    <div className="py-16">
+      <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
+        <div className="flex items-center gap-6">
+          <img
+            src={story.image}
+            alt={story.name}
+            className="w-24 h-24 rounded-full object-cover"
+          />
+          <div>
+            <h1 className="text-2xl font-bold">{story.name}</h1>
+            <p className="text-gray-600">{story.designation}</p>
+            <p className="text-blue-600">{story.company}</p>
+            <p className="text-gray-500 text-sm">
+              {story.experience}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <h3 className="font-semibold mb-2">Skills</h3>
+          <div className="flex flex-wrap gap-2">
+            {story.skills.map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-1 bg-gray-200 rounded-full text-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <h3 className="font-semibold mb-2">About</h3>
+          <p className="text-gray-700">{story.about}</p>
+        </div>
+      </div>
+    </div>
+  );
+}

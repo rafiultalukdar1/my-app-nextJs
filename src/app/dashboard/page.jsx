@@ -3,7 +3,11 @@ import React from 'react';
 const Dashboard = () => {
     return (
         <div>
-            Dashboard
+            <div className='py-20'>
+                <div>
+                    <h2 className='text-center text-[40px] font-bold text-amber-600'>Wellcome Dashboard</h2>
+                </div>
+            </div>
         </div>
     );
 };

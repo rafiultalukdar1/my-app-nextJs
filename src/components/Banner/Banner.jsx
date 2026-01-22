@@ -6,7 +6,7 @@ const Banner = () => {
 
     const router = useRouter();
     const handleBtn = () => {
-        const password = prompt('Enter your password');
+        const password = prompt('Enter your password - (1234)');
         if(password == '1234'){
             router.push('/dashboard')
         }
@@ -24,7 +24,7 @@ const Banner = () => {
                     </p>
                     <div className="mt-6 flex gap-4">
                         <button onClick={handleBtn} className="px-6 py-3 bg-indigo-500 text-white font-semibold rounded-lg hover:bg-indigo-600 transition cursor-pointer">
-                            Get Started
+                            Go to Dashboard
                         </button>
                     </div>
                 </div>
